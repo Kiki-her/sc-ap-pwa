@@ -76,9 +76,7 @@ export function useSessionResult(sessionId: string): UseSessionResultResult {
           const question = questionMap.get(questionId);
           const answer = answerByQuestion.get(questionId);
           if (!question || !answer) return [];
-          return [
-            { question, selectedAnswer: answer.selectedAnswer, isCorrect: answer.isCorrect },
-          ];
+          return [{ question, selectedAnswer: answer.selectedAnswer, isCorrect: answer.isCorrect }];
         });
 
         const categoryMap = new Map<SubCategory, { total: number; correct: number }>();

@@ -7,6 +7,7 @@ import { QuizPage } from "./pages/QuizPage";
 import { QuizSettingsPage } from "./pages/QuizSettingsPage";
 import { ResultPage } from "./pages/ResultPage";
 import { StatsPage } from "./pages/StatsPage";
+import { UpdatePrompt } from "./components/common/UpdatePrompt";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/stats" element={<StatsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <UpdatePrompt />
       </PageLayout>
     </BrowserRouter>
   );

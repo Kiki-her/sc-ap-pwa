@@ -23,9 +23,7 @@ describe("mistakes", () => {
     expect(entry).toBeDefined();
     expect(entry?.mistakeCount).toBe(1);
     expect(entry?.archived).toBe(false);
-    expect(entry?.lastMistakenAt.getTime()).toBe(
-      new Date("2026-01-01T10:00:00Z").getTime(),
-    );
+    expect(entry?.lastMistakenAt.getTime()).toBe(new Date("2026-01-01T10:00:00Z").getTime());
   });
 
   it("既存の間違いは mistakeCount が加算され lastMistakenAt が更新される", async () => {
@@ -35,9 +33,7 @@ describe("mistakes", () => {
 
     const entry = await getMistake("SC-2024S-Q01");
     expect(entry?.mistakeCount).toBe(3);
-    expect(entry?.lastMistakenAt.getTime()).toBe(
-      new Date("2026-01-09T10:00:00Z").getTime(),
-    );
+    expect(entry?.lastMistakenAt.getTime()).toBe(new Date("2026-01-09T10:00:00Z").getTime());
 
     const all = await getAllMistakes();
     expect(all).toHaveLength(1);

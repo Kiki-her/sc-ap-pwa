@@ -59,7 +59,9 @@ export function ResultPage() {
       <section className="mb-5 rounded-xl border border-gray-200 bg-white p-5 text-center dark:border-gray-700 dark:bg-gray-800">
         <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">
           {result.correctCount} / {result.totalQuestions}
-          <span className="ml-1 text-base font-normal text-gray-500 dark:text-gray-400">問正解</span>
+          <span className="ml-1 text-base font-normal text-gray-500 dark:text-gray-400">
+            問正解
+          </span>
         </p>
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
           正答率 {formatRatePercent(result.correctRate)}

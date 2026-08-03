@@ -54,7 +54,10 @@ function validateQuestion(raw: unknown, index: number, filename: string): string
     errors.push(`${id}: exam と id が一致しません`);
   }
 
-  if (typeof raw.year !== "number" || !TARGET_YEARS.includes(raw.year as (typeof TARGET_YEARS)[number])) {
+  if (
+    typeof raw.year !== "number" ||
+    !TARGET_YEARS.includes(raw.year as (typeof TARGET_YEARS)[number])
+  ) {
     errors.push(`${id}: year が対象範囲外です (${String(raw.year)})`);
   } else if (String(raw.year) !== idYear) {
     errors.push(`${id}: year と id が一致しません`);
@@ -216,7 +219,9 @@ function main(): void {
 
   for (const result of results) {
     const mark = result.errors.length === 0 ? "✓" : "✗";
-    console.log(`${mark} ${result.filename}: ${result.count} questions, ${result.errors.length} errors`);
+    console.log(
+      `${mark} ${result.filename}: ${result.count} questions, ${result.errors.length} errors`,
+    );
     for (const error of result.errors) console.log(`    ERROR: ${error}`);
     for (const warning of result.warnings) console.log(`    WARN : ${warning}`);
   }

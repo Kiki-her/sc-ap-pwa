@@ -13,9 +13,7 @@ export function HomePage() {
   return (
     <div className="page-enter">
       <header className="safe-top mb-4">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-          SC過去問トレーニング
-        </h1>
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">SC過去問トレーニング</h1>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
           SC・AP午前問題をスマホで反復学習
         </p>

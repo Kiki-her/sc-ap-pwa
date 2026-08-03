@@ -67,13 +67,13 @@ export function StatsPage() {
             <div className="text-gray-500 dark:text-gray-400">
               <DailyChart data={stats.dailyCounts} />
             </div>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              青: 解答数 / 緑: 正答数
-            </p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">青: 解答数 / 緑: 正答数</p>
           </section>
 
           <section className="mb-5 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="mb-2 text-sm font-bold text-gray-900 dark:text-gray-100">分野別正答率</h2>
+            <h2 className="mb-2 text-sm font-bold text-gray-900 dark:text-gray-100">
+              分野別正答率
+            </h2>
             <CategoryChart stats={stats.categoryStats} />
           </section>
 

@@ -29,9 +29,7 @@ export function ExplanationPanel({
       <div className="mb-2 flex items-center justify-between gap-2">
         <p
           className={`text-sm font-bold ${
-            isCorrect
-              ? "text-green-700 dark:text-green-300"
-              : "text-red-700 dark:text-red-300"
+            isCorrect ? "text-green-700 dark:text-green-300" : "text-red-700 dark:text-red-300"
           }`}
         >
           {isCorrect ? "正解！" : `不正解（正解は ${correctAnswer}）`}

@@ -18,7 +18,12 @@ export function DailyChart({ data }: DailyChartProps) {
     <div className="h-52 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.3} vertical={false} />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="#94a3b8"
+            strokeOpacity={0.3}
+            vertical={false}
+          />
           <XAxis
             dataKey="label"
             tick={{ fontSize: 10, fill: "currentColor" }}

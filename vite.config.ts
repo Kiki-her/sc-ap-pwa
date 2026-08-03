@@ -9,8 +9,15 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png"],
+      registerType: "prompt",
+      includeAssets: [
+        "favicon.ico",
+        "favicon.svg",
+        "icon-192.png",
+        "icon-512.png",
+        "icon-maskable-512.png",
+        "apple-touch-icon.png",
+      ],
       manifest: {
         name: "SC過去問トレーニング",
         short_name: "SC過去問",
@@ -26,7 +33,7 @@ export default defineConfig({
           { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
           { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
           {
-            src: "/icon-512.png",
+            src: "/icon-maskable-512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -37,6 +44,7 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,json,png,svg,ico,webp}"],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
         navigateFallback: "index.html",
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -50,6 +58,17 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+    // サンドボックス/プレビュー環境の外部ホスト名を許可する
+    allowedHosts: true,
+  },
+  preview: {
+    host: "0.0.0.0",
+    port: 3000,
+    allowedHosts: true,
+  },
   test: {
     globals: true,
     environment: "jsdom",

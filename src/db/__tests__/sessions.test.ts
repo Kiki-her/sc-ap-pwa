@@ -66,12 +66,8 @@ describe("sessions", () => {
   });
 
   it("未完了セッションのうち最新のものを取得できる", async () => {
-    await createSession(
-      session({ id: "old", startedAt: new Date("2026-01-01T09:00:00Z") }),
-    );
-    await createSession(
-      session({ id: "latest", startedAt: new Date("2026-01-03T09:00:00Z") }),
-    );
+    await createSession(session({ id: "old", startedAt: new Date("2026-01-01T09:00:00Z") }));
+    await createSession(session({ id: "latest", startedAt: new Date("2026-01-03T09:00:00Z") }));
     await createSession(
       session({
         id: "done",
@@ -85,20 +81,14 @@ describe("sessions", () => {
   });
 
   it("未完了セッションがない場合は undefined を返す", async () => {
-    await createSession(
-      session({ id: "done", completedAt: new Date("2026-01-05T10:00:00Z") }),
-    );
+    await createSession(session({ id: "done", completedAt: new Date("2026-01-05T10:00:00Z") }));
 
     await expect(getIncompleteSession()).resolves.toBeUndefined();
   });
 
   it("完了済みセッションを新しい順に取得できる", async () => {
-    await createSession(
-      session({ id: "s1", completedAt: new Date("2026-01-01T10:00:00Z") }),
-    );
-    await createSession(
-      session({ id: "s2", completedAt: new Date("2026-01-03T10:00:00Z") }),
-    );
+    await createSession(session({ id: "s1", completedAt: new Date("2026-01-01T10:00:00Z") }));
+    await createSession(session({ id: "s2", completedAt: new Date("2026-01-03T10:00:00Z") }));
     await createSession(session({ id: "s3" }));
 
     const completed = await getCompletedSessions();
@@ -106,12 +96,8 @@ describe("sessions", () => {
   });
 
   it("完了済みセッションの取得件数を制限できる", async () => {
-    await createSession(
-      session({ id: "s1", completedAt: new Date("2026-01-01T10:00:00Z") }),
-    );
-    await createSession(
-      session({ id: "s2", completedAt: new Date("2026-01-03T10:00:00Z") }),
-    );
+    await createSession(session({ id: "s1", completedAt: new Date("2026-01-01T10:00:00Z") }));
+    await createSession(session({ id: "s2", completedAt: new Date("2026-01-03T10:00:00Z") }));
 
     const completed = await getCompletedSessions(1);
     expect(completed).toHaveLength(1);

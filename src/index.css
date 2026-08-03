@@ -15,8 +15,13 @@ body {
 
 body {
   font-family:
-    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", Meiryo, system-ui,
-    -apple-system, sans-serif;
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Noto Sans JP",
+    Meiryo,
+    system-ui,
+    -apple-system,
+    sans-serif;
   overscroll-behavior-y: none;
 }
 

@@ -1,11 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { mockQuestions } from "./mockQuestions";
-import {
-  countFilteredQuestions,
-  filterQuestions,
-  pickQuestionsByIds,
-} from "../questionFilter";
+import { countFilteredQuestions, filterQuestions, pickQuestionsByIds } from "../questionFilter";
 
 describe("filterQuestions", () => {
   it("条件が空なら全件返す", () => {
@@ -74,10 +70,7 @@ describe("filterQuestions", () => {
       questionIds: ["SC-2024S-Q01", "AP-2023A-Q02", "NOT-EXIST-Q99"],
     });
 
-    expect(result.map((question) => question.id).sort()).toEqual([
-      "AP-2023A-Q02",
-      "SC-2024S-Q01",
-    ]);
+    expect(result.map((question) => question.id).sort()).toEqual(["AP-2023A-Q02", "SC-2024S-Q01"]);
   });
 
   it("questionIds と他条件を併用できる", () => {

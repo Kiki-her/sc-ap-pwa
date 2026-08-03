@@ -32,14 +32,10 @@ export const CATEGORY_MAP: Record<MajorCategory, SubCategory[]> = {
 export const ALL_SUB_CATEGORIES: SubCategory[] = Object.values(CATEGORY_MAP).flat();
 
 /** 大分類の配列 */
-export const ALL_MAJOR_CATEGORIES: MajorCategory[] = Object.keys(
-  CATEGORY_MAP,
-) as MajorCategory[];
+export const ALL_MAJOR_CATEGORIES: MajorCategory[] = Object.keys(CATEGORY_MAP) as MajorCategory[];
 
 /** 中分類 → 大分類の逆引き */
-export const SUB_TO_MAJOR: Record<SubCategory, MajorCategory> = Object.entries(
-  CATEGORY_MAP,
-).reduce(
+export const SUB_TO_MAJOR: Record<SubCategory, MajorCategory> = Object.entries(CATEGORY_MAP).reduce(
   (acc, [major, subs]) => {
     for (const sub of subs) {
       acc[sub] = major as MajorCategory;

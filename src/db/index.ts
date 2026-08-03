@@ -9,8 +9,7 @@ export class AppDB extends Dexie {
   constructor() {
     super("sc-study-app");
     this.version(1).stores({
-      answerRecords:
-        "++id, questionId, sessionId, answeredAt, isCorrect, [sessionId+questionId]",
+      answerRecords: "++id, questionId, sessionId, answeredAt, isCorrect, [sessionId+questionId]",
       sessions: "id, mode, startedAt, completedAt",
       mistakes: "questionId, mistakeCount, archived, lastMistakenAt",
     });

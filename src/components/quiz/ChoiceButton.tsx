@@ -1,11 +1,7 @@
 import type { ChoiceKey } from "../../types";
 
 export type ChoiceState =
-  | "default"
-  | "selected-correct"
-  | "selected-wrong"
-  | "correct"
-  | "disabled";
+  "default" | "selected-correct" | "selected-wrong" | "correct" | "disabled";
 
 interface ChoiceButtonProps {
   choiceKey: ChoiceKey;
