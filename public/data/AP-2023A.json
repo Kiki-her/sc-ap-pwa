@@ -1,0 +1,192 @@
+[
+  {
+    "id": "AP-2023A-Q01",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 1,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "基礎理論",
+    "questionText": "10進数の13を2進数で表したものはどれか。",
+    "choices": {
+      "ア": "1011",
+      "イ": "1101",
+      "ウ": "1110",
+      "エ": "10011"
+    },
+    "correctAnswer": "イ",
+    "explanation": "13 = 8+4+1 なので 1101 となる。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q02",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 2,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "コンピュータ構成要素",
+    "questionText": "キャッシュメモリを設ける主な目的はどれか。",
+    "choices": {
+      "ア": "主記憶の容量を増やす",
+      "イ": "CPUと主記憶の速度差を埋める",
+      "ウ": "電力消費を増やす",
+      "エ": "外部記憶の寿命を延ばす"
+    },
+    "correctAnswer": "イ",
+    "explanation": "キャッシュはCPUと主記憶のアクセス速度差を緩和して実効性能を高める。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q03",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 3,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "システム構成要素",
+    "questionText": "稼働率0.9の装置を2台直列に接続したシステム全体の稼働率はどれか。",
+    "choices": {
+      "ア": "0.81",
+      "イ": "0.90",
+      "ウ": "0.95",
+      "エ": "0.99"
+    },
+    "correctAnswer": "ア",
+    "explanation": "直列構成の稼働率は各稼働率の積。0.9×0.9=0.81。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q04",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 4,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ソフトウェア",
+    "questionText": "仮想記憶方式でページフォールトが発生する状況はどれか。",
+    "choices": {
+      "ア": "参照ページが主記憶上にある",
+      "イ": "参照ページが主記憶上にない",
+      "ウ": "CPU使用率が低い",
+      "エ": "ディスクが未使用である"
+    },
+    "correctAnswer": "イ",
+    "explanation": "参照したページが主記憶に存在しないときにページフォールトが発生する。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q05",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 5,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "データベース",
+    "questionText": "ACID特性の「一貫性」の説明はどれか。",
+    "choices": {
+      "ア": "トランザクションが分割不能である",
+      "イ": "処理前後で整合性制約が保たれる",
+      "ウ": "並行実行が直列実行と等価になる",
+      "エ": "コミット結果が失われない"
+    },
+    "correctAnswer": "イ",
+    "explanation": "一貫性(Consistency)は処理前後でデータの整合性制約が保たれること。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q06",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 6,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ネットワーク",
+    "questionText": "サブネットマスク255.255.255.192のネットワークで利用できるホスト数はどれか。",
+    "choices": {
+      "ア": "30",
+      "イ": "62",
+      "ウ": "126",
+      "エ": "254"
+    },
+    "correctAnswer": "イ",
+    "explanation": "ホスト部6ビットなので 2^6-2=62 台。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q07",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 7,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "ディジタル署名によって確認できることはどれか。",
+    "choices": {
+      "ア": "通信内容の秘匿",
+      "イ": "送信者の真正性と改ざん検知",
+      "ウ": "通信速度の向上",
+      "エ": "可用性の確保"
+    },
+    "correctAnswer": "イ",
+    "explanation": "署名は送信者の真正性と、メッセージが改ざんされていないことを保証する。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q08",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 8,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "システム開発技術",
+    "questionText": "ブラックボックステストの説明はどれか。",
+    "choices": {
+      "ア": "内部構造に基づき網羅する",
+      "イ": "仕様に基づき入出力で検証する",
+      "ウ": "コード行数を測定する",
+      "エ": "静的解析で欠陥を探す"
+    },
+    "correctAnswer": "イ",
+    "explanation": "ブラックボックステストは内部構造を見ず、仕様上の入出力で検証する。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q09",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 9,
+    "majorCategory": "マネジメント系",
+    "subCategory": "サービスマネジメント",
+    "questionText": "SLAに記載する内容として最も適切なものはどれか。",
+    "choices": {
+      "ア": "サービス品質の目標値",
+      "イ": "従業員の人事評価基準",
+      "ウ": "開発言語の選定理由",
+      "エ": "社内の座席表"
+    },
+    "correctAnswer": "ア",
+    "explanation": "SLAはサービス品質の合意目標値(可用性・応答時間等)を定義する。",
+    "imageUrl": null
+  },
+  {
+    "id": "AP-2023A-Q10",
+    "exam": "AP",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 10,
+    "majorCategory": "ストラテジ系",
+    "subCategory": "経営戦略マネジメント",
+    "questionText": "SWOT分析の「O」が指すものはどれか。",
+    "choices": {
+      "ア": "強み",
+      "イ": "弱み",
+      "ウ": "機会",
+      "エ": "脅威"
+    },
+    "correctAnswer": "ウ",
+    "explanation": "O は Opportunity(機会)を指す外部環境のプラス要因。",
+    "imageUrl": null
+  }
+]

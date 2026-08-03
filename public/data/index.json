@@ -1,3 +1,34 @@
 {
-  "files": ["AP-2024A.json", "SC-2024S.json"]
+  "files": [
+    {
+      "filename": "AP-2023A.json",
+      "exam": "AP",
+      "year": 2023,
+      "season": "秋",
+      "count": 10
+    },
+    {
+      "filename": "AP-2024A.json",
+      "exam": "AP",
+      "year": 2024,
+      "season": "秋",
+      "count": 5
+    },
+    {
+      "filename": "SC-2023A.json",
+      "exam": "SC",
+      "year": 2023,
+      "season": "秋",
+      "count": 10
+    },
+    {
+      "filename": "SC-2024S.json",
+      "exam": "SC",
+      "year": 2024,
+      "season": "春",
+      "count": 5
+    }
+  ],
+  "totalQuestions": 30,
+  "lastUpdated": "2026-08-03"
 }

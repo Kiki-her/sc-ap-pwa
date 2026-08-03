@@ -1,0 +1,192 @@
+[
+  {
+    "id": "SC-2023A-Q01",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 1,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "SQLインジェクション対策として最も有効なものはどれか。",
+    "choices": {
+      "ア": "入力値をそのまま連結する",
+      "イ": "プレースホルダを用いる",
+      "ウ": "エラーメッセージを詳細表示する",
+      "エ": "通信をHTTPに戻す"
+    },
+    "correctAnswer": "イ",
+    "explanation": "プレースホルダ(バインド機構)により入力値がSQL構文として解釈されなくなる。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q02",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 2,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "リスクアセスメントの構成要素の組合せはどれか。",
+    "choices": {
+      "ア": "リスク特定・リスク分析・リスク評価",
+      "イ": "計画・実行・改善",
+      "ウ": "認証・認可・監査",
+      "エ": "予防・検知・回復"
+    },
+    "correctAnswer": "ア",
+    "explanation": "リスクアセスメントはリスク特定、リスク分析、リスク評価から成る。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q03",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 3,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "CVSS基本評価基準で評価される項目はどれか。",
+    "choices": {
+      "ア": "攻撃元区分や必要な特権レベル",
+      "イ": "組織の売上規模",
+      "ウ": "開発言語の種類",
+      "エ": "運用担当者数"
+    },
+    "correctAnswer": "ア",
+    "explanation": "CVSS基本値は攻撃元区分、攻撃条件の複雑さ、必要な特権レベル等で算出される。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q04",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 4,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ネットワーク",
+    "questionText": "DNSSECで実現できることはどれか。",
+    "choices": {
+      "ア": "DNS通信の暗号化",
+      "イ": "DNS応答の正当性検証",
+      "ウ": "DNSクエリの圧縮",
+      "エ": "名前解決の高速化"
+    },
+    "correctAnswer": "イ",
+    "explanation": "DNSSECは公開鍵署名によりDNS応答の出自認証と改ざん検知を行う。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q05",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 5,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ネットワーク",
+    "questionText": "IPsecのESPが提供する機能はどれか。",
+    "choices": {
+      "ア": "認証のみ",
+      "イ": "暗号化と認証",
+      "ウ": "圧縮のみ",
+      "エ": "経路制御"
+    },
+    "correctAnswer": "イ",
+    "explanation": "ESPはペイロードの暗号化と認証(完全性)を提供する。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q06",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 6,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "標的型攻撃メールへの組織的対策として適切なものはどれか。",
+    "choices": {
+      "ア": "添付ファイルを常に実行する",
+      "イ": "訓練と報告体制の整備",
+      "ウ": "メール監視を廃止する",
+      "エ": "全社で同一パスワードを使う"
+    },
+    "correctAnswer": "イ",
+    "explanation": "利用者訓練とインシデント報告体制の整備が組織的対策として有効。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q07",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 7,
+    "majorCategory": "マネジメント系",
+    "subCategory": "システム監査",
+    "questionText": "監査証跡として適切なものはどれか。",
+    "choices": {
+      "ア": "操作ログ",
+      "イ": "口頭の説明",
+      "ウ": "推測に基づく所感",
+      "エ": "未保存の画面表示"
+    },
+    "correctAnswer": "ア",
+    "explanation": "監査証跡は操作ログ等、事後に検証可能な記録である。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q08",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 8,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "データベース",
+    "questionText": "データベースの暗号化で列単位暗号化を選ぶ利点はどれか。",
+    "choices": {
+      "ア": "全件走査が高速になる",
+      "イ": "機密列だけ保護しオーバヘッドを抑える",
+      "ウ": "バックアップが不要になる",
+      "エ": "権限管理が不要になる"
+    },
+    "correctAnswer": "イ",
+    "explanation": "必要な列のみ暗号化することで性能への影響を抑えつつ機密性を確保できる。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q09",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 9,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ソフトウェア開発管理技術",
+    "questionText": "セキュアコーディングにおける入力検証の原則はどれか。",
+    "choices": {
+      "ア": "ブラックリスト方式のみ採用する",
+      "イ": "ホワイトリスト方式で許可値を限定する",
+      "ウ": "検証をクライアント側だけで行う",
+      "エ": "検証を省略して例外処理に任せる"
+    },
+    "correctAnswer": "イ",
+    "explanation": "許可する値を明示するホワイトリスト方式が原則として推奨される。",
+    "imageUrl": null
+  },
+  {
+    "id": "SC-2023A-Q10",
+    "exam": "SC",
+    "year": 2023,
+    "season": "秋",
+    "questionNumber": 10,
+    "majorCategory": "ストラテジ系",
+    "subCategory": "法務",
+    "questionText": "不正アクセス禁止法が禁止している行為はどれか。",
+    "choices": {
+      "ア": "他人の識別符号を無断で入力する行為",
+      "イ": "自組織の脆弱性診断を計画する行為",
+      "ウ": "パスワードを定期変更する行為",
+      "エ": "ログを保全する行為"
+    },
+    "correctAnswer": "ア",
+    "explanation": "他人の識別符号を無断で用いて制限を免れアクセスする行為が禁止されている。",
+    "imageUrl": null
+  }
+]

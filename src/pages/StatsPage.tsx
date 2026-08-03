@@ -1,74 +1,106 @@
-import { useEffect, useMemo, useState } from 'react'
-import { db } from '../db'
-import { buildCategoryStats, buildDailyActivity, computeStreak } from '../lib/stats'
-import { loadQuestions } from '../lib/questions'
-import type { AnswerRecord, Question } from '../types'
+import { useNavigate } from "react-router-dom";
+
+import { CategoryChart } from "../components/stats/CategoryChart";
+import { DailyChart } from "../components/stats/DailyChart";
+import { EmptyState } from "../components/common/EmptyState";
+import { PageHeader } from "../components/common/PageHeader";
+import { Skeleton } from "../components/common/Skeleton";
+import { formatRate, formatRatePercent } from "../utils/format";
+import { useStats } from "../hooks/useStats";
 
 export function StatsPage() {
-  const [answers, setAnswers] = useState<AnswerRecord[]>([])
-  const [questions, setQuestions] = useState<Question[]>([])
+  const navigate = useNavigate();
+  const { stats, isLoading } = useStats();
 
-  useEffect(() => {
-    void Promise.all([db.answerRecords.toArray(), loadQuestions()]).then(([records, questionData]) => {
-      setAnswers(records)
-      setQuestions(questionData)
-    })
-  }, [])
+  if (isLoading || !stats) {
+    return (
+      <div className="space-y-3">
+        <Skeleton className="h-6 w-24" />
+        <Skeleton className="h-24 w-full" />
+        <Skeleton className="h-52 w-full" />
+      </div>
+    );
+  }
 
-  const totalAnswers = answers.length
-  const correctRate = totalAnswers === 0 ? 0 : Math.round((answers.filter((a) => a.isCorrect).length / totalAnswers) * 100)
-  const streak = computeStreak(answers)
-
-  const daily = useMemo(() => buildDailyActivity(answers), [answers])
-  const categoryStats = useMemo(() => buildCategoryStats(questions, answers), [questions, answers])
-  const weakTop5 = [...categoryStats]
-    .sort((a, b) => a.correctRate - b.correctRate)
-    .slice(0, 5)
-
-  const maxDaily = Math.max(...daily.map((item) => item.count), 1)
+  const hasData = stats.totalAnswered > 0;
 
   return (
-    <section className="page">
-      <article className="card">
-        <p>総解答数: {totalAnswers}</p>
-        <p>正答率: {correctRate}%</p>
-        <p>連続学習日数: {streak}日</p>
-      </article>
+    <div className="page-enter">
+      <PageHeader title="学習履歴" onBack={() => navigate("/")} />
 
-      <article className="card">
-        <h3>直近30日の日別学習量</h3>
-        <div className="bar-grid">
-          {daily.map((item) => (
-            <div key={item.day} className="bar-col" title={`${item.day}: ${item.count}問`}>
-              <div style={{ height: `${(item.count / maxDaily) * 100}%` }} className="bar" />
-            </div>
-          ))}
+      <section className="mb-5 grid grid-cols-3 gap-2">
+        <div className="rounded-xl border border-gray-200 bg-white p-3 text-center dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">総解答数</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {stats.totalAnswered}
+          </p>
         </div>
-      </article>
+        <div className="rounded-xl border border-gray-200 bg-white p-3 text-center dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">正答率</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {formatRate(stats.totalCorrectRate)}
+          </p>
+        </div>
+        <div className="rounded-xl border border-gray-200 bg-white p-3 text-center dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">連続学習</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {stats.streakDays}
+            <span className="text-sm font-normal">日</span>
+          </p>
+        </div>
+      </section>
 
-      <article className="card">
-        <h3>分野別正答率</h3>
-        {categoryStats.map((item) => (
-          <div key={item.category} className="row-stat">
-            <span>{item.category}</span>
-            <div className="progress-wrap">
-              <div className="progress-fill" style={{ width: `${item.correctRate}%` }} />
+      {!hasData ? (
+        <EmptyState
+          icon="📊"
+          title="まだ学習データがありません"
+          description="1セット解くと、ここに学習量と分野別の正答率が表示されます。"
+          actionLabel="学習を始める"
+          onAction={() => navigate("/settings")}
+        />
+      ) : (
+        <>
+          <section className="mb-5 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className="mb-2 text-sm font-bold text-gray-900 dark:text-gray-100">
+              直近30日の学習量
+            </h2>
+            <div className="text-gray-500 dark:text-gray-400">
+              <DailyChart data={stats.dailyCounts} />
             </div>
-            <small>{item.correctRate}%</small>
-          </div>
-        ))}
-      </article>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              青: 解答数 / 緑: 正答数
+            </p>
+          </section>
 
-      <article className="card">
-        <h3>苦手分野 TOP5</h3>
-        <ol>
-          {weakTop5.map((item) => (
-            <li key={item.category}>
-              {item.category} ({item.correctRate}%)
-            </li>
-          ))}
-        </ol>
-      </article>
-    </section>
-  )
+          <section className="mb-5 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className="mb-2 text-sm font-bold text-gray-900 dark:text-gray-100">分野別正答率</h2>
+            <CategoryChart stats={stats.categoryStats} />
+          </section>
+
+          {stats.weakCategories.length > 0 ? (
+            <section className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+              <h2 className="mb-2 text-sm font-bold text-gray-900 dark:text-gray-100">
+                苦手分野 TOP5
+              </h2>
+              <ol className="space-y-1">
+                {stats.weakCategories.map((item, index) => (
+                  <li
+                    key={item.subCategory}
+                    className="flex items-baseline justify-between gap-2 text-sm"
+                  >
+                    <span className="min-w-0 truncate text-gray-800 dark:text-gray-200">
+                      {index + 1}. {item.subCategory}
+                    </span>
+                    <span className="shrink-0 tabular-nums text-gray-600 dark:text-gray-300">
+                      {formatRatePercent(item.rate)}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : null}
+        </>
+      )}
+    </div>
+  );
 }

@@ -1,35 +1,58 @@
-import { defineConfig } from 'vitest/config'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png"],
       manifest: {
-        name: 'SC/AP 過去問 PWA',
-        short_name: 'SC AP',
-        theme_color: '#1e3a5f',
-        background_color: '#1f232b',
-        display: 'standalone',
-        start_url: '/',
+        name: "SC過去問トレーニング",
+        short_name: "SC過去問",
+        description: "情報処理安全確保支援士・応用情報の過去問演習アプリ",
+        lang: "ja",
+        theme_color: "#1e3a5f",
+        background_color: "#f8fafc",
+        display: "standalone",
+        orientation: "portrait",
+        scope: "/",
+        start_url: "/",
         icons: [
+          { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
           {
-            src: '/favicon.svg',
-            sizes: 'any',
-            type: 'image/svg+xml',
+            src: "/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,json,png,jpg,jpeg,webp}'],
+        globPatterns: ["**/*.{js,css,html,json,png,svg,ico,webp}"],
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        navigateFallback: "index.html",
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-cache",
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            },
+          },
+        ],
       },
     }),
   ],
   test: {
-    environment: 'jsdom',
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/test-setup.ts"],
   },
-})
+});

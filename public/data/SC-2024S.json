@@ -1,82 +1,97 @@
 [
   {
-    "id": "SC-2024S-01",
+    "id": "SC-2024S-Q01",
     "exam": "SC",
     "year": 2024,
-    "season": "S",
-    "category": "セキュリティ",
-    "question": "CSIRTの主な役割として適切なものはどれか。",
-    "choices": [
-      "障害対応を外部委託する",
-      "インシデント対応を統括する",
-      "人事評価を行う",
-      "財務報告を監査する"
-    ],
-    "answer": 1,
-    "explanation": "CSIRTはセキュリティインシデント対応の中核組織。"
+    "season": "春",
+    "questionNumber": 1,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "CSIRTの主な役割として適切なものはどれか。",
+    "choices": {
+      "ア": "障害対応を外部委託する",
+      "イ": "インシデント対応を統括する",
+      "ウ": "人事評価を行う",
+      "エ": "財務報告を監査する"
+    },
+    "correctAnswer": "イ",
+    "explanation": "CSIRTはセキュリティインシデント対応の中核組織。",
+    "imageUrl": null
   },
   {
-    "id": "SC-2024S-02",
+    "id": "SC-2024S-Q02",
     "exam": "SC",
     "year": 2024,
-    "season": "S",
-    "category": "認証",
-    "question": "多要素認証に該当する組合せはどれか。",
-    "choices": [
-      "パスワードと秘密の質問",
-      "ICカードと指紋",
-      "メールアドレスと氏名",
-      "社員番号と電話番号"
-    ],
-    "answer": 1,
-    "explanation": "知識要素以外に所持要素・生体要素を組み合わせる。"
+    "season": "春",
+    "questionNumber": 2,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "セキュリティ",
+    "questionText": "多要素認証に該当する組合せはどれか。",
+    "choices": {
+      "ア": "パスワードと秘密の質問",
+      "イ": "ICカードと指紋",
+      "ウ": "メールアドレスと氏名",
+      "エ": "社員番号と電話番号"
+    },
+    "correctAnswer": "イ",
+    "explanation": "知識要素以外に所持要素・生体要素を組み合わせる。",
+    "imageUrl": null
   },
   {
-    "id": "SC-2024S-03",
+    "id": "SC-2024S-Q03",
     "exam": "SC",
     "year": 2024,
-    "season": "S",
-    "category": "法務",
-    "question": "個人情報保護法における安全管理措置として適切なものはどれか。",
-    "choices": [
-      "アクセス制御の実施",
-      "収集目的を非公開にする",
-      "保存期間を無期限にする",
-      "委託先監督を省略する"
-    ],
-    "answer": 0,
-    "explanation": "アクセス制御は安全管理措置の基本的対応。"
+    "season": "春",
+    "questionNumber": 3,
+    "majorCategory": "ストラテジ系",
+    "subCategory": "法務",
+    "questionText": "個人情報保護法における安全管理措置として適切なものはどれか。",
+    "choices": {
+      "ア": "アクセス制御の実施",
+      "イ": "収集目的を非公開にする",
+      "ウ": "保存期間を無期限にする",
+      "エ": "委託先監督を省略する"
+    },
+    "correctAnswer": "ア",
+    "explanation": "アクセス制御は安全管理措置の基本的対応。",
+    "imageUrl": null
   },
   {
-    "id": "SC-2024S-04",
+    "id": "SC-2024S-Q04",
     "exam": "SC",
     "year": 2024,
-    "season": "S",
-    "category": "ネットワーク",
-    "question": "WAFの主目的として適切なものはどれか。",
-    "choices": [
-      "メールスパムを遮断する",
-      "Webアプリ層への攻撃を防御する",
-      "端末のパッチを自動配布する",
-      "通信経路を物理的に分離する"
-    ],
-    "answer": 1,
-    "explanation": "WAFはWebアプリケーション層への攻撃を検知・防御する。"
+    "season": "春",
+    "questionNumber": 4,
+    "majorCategory": "テクノロジ系",
+    "subCategory": "ネットワーク",
+    "questionText": "WAFの主目的として適切なものはどれか。",
+    "choices": {
+      "ア": "メールスパムを遮断する",
+      "イ": "Webアプリ層への攻撃を防御する",
+      "ウ": "端末のパッチを自動配布する",
+      "エ": "通信経路を物理的に分離する"
+    },
+    "correctAnswer": "イ",
+    "explanation": "WAFはWebアプリケーション層への攻撃を検知・防御する。",
+    "imageUrl": null
   },
   {
-    "id": "SC-2024S-05",
+    "id": "SC-2024S-Q05",
     "exam": "SC",
     "year": 2024,
-    "season": "S",
-    "category": "監査",
-    "question": "ログの改ざん検知に有効な方法はどれか。",
-    "choices": [
-      "ログを平文のまま保管する",
-      "ハッシュ値を記録して整合性確認する",
-      "ログの取得間隔を延長する",
-      "障害時のみログを取得する"
-    ],
-    "answer": 1,
-    "explanation": "ハッシュ値で整合性を確認することで改ざん検知が可能。"
+    "season": "春",
+    "questionNumber": 5,
+    "majorCategory": "マネジメント系",
+    "subCategory": "システム監査",
+    "questionText": "ログの改ざん検知に有効な方法はどれか。",
+    "choices": {
+      "ア": "ログを平文のまま保管する",
+      "イ": "ハッシュ値を記録して整合性確認する",
+      "ウ": "ログの取得間隔を延長する",
+      "エ": "障害時のみログを取得する"
+    },
+    "correctAnswer": "イ",
+    "explanation": "ハッシュ値で整合性を確認することで改ざん検知が可能。",
+    "imageUrl": null
   }
 ]

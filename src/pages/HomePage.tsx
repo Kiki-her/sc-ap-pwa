@@ -1,66 +1,94 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { db } from '../db'
-import { loadQuestions } from '../lib/questions'
-import { ProgressBar } from '../components/ProgressBar'
-import type { Session } from '../types'
+import { useNavigate } from "react-router-dom";
+
+import { MenuButton } from "../components/common/MenuButton";
+import { ProgressBar } from "../components/common/ProgressBar";
+import { Skeleton } from "../components/common/Skeleton";
+import { formatRate } from "../utils/format";
+import { useHomeStats } from "../hooks/useHomeStats";
 
 export function HomePage() {
-  const navigate = useNavigate()
-  const [totals, setTotals] = useState({ totalAnswers: 0, correctAnswers: 0 })
-  const [questionCount, setQuestionCount] = useState(0)
-  const [resumeSession, setResumeSession] = useState<Session | null>(null)
-
-  useEffect(() => {
-    void (async () => {
-      const [answers, sessions, questions] = await Promise.all([
-        db.answerRecords.toArray(),
-        db.sessions.toArray(),
-        loadQuestions(),
-      ])
-
-      setTotals({
-        totalAnswers: answers.length,
-        correctAnswers: answers.filter((record) => record.isCorrect).length,
-      })
-      setQuestionCount(questions.length)
-      setResumeSession(
-        sessions
-          .filter((session) => !session.completedAt)
-          .sort((a, b) => b.startedAt.localeCompare(a.startedAt))
-          .at(0) ?? null,
-      )
-    })()
-  }, [])
-
-  const correctRate = useMemo(() => {
-    if (totals.totalAnswers === 0) return 0
-    return Math.round((totals.correctAnswers / totals.totalAnswers) * 100)
-  }, [totals])
+  const navigate = useNavigate();
+  const { stats, isLoading } = useHomeStats();
 
   return (
-    <section className="page">
-      <article className="card">
-        <p>解答済み: {totals.totalAnswers} 問</p>
-        <p>正答率: {correctRate}%</p>
-        <ProgressBar value={totals.totalAnswers} total={questionCount || 1} />
-      </article>
+    <div className="page-enter">
+      <header className="safe-top mb-4">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          SC過去問トレーニング
+        </h1>
+        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+          SC・AP午前問題をスマホで反復学習
+        </p>
+      </header>
 
-      {resumeSession && (
-        <button type="button" className="primary" onClick={() => navigate(`/quiz/${resumeSession.id}`)}>
-          続きから
-        </button>
-      )}
+      <section className="mb-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+        {isLoading || !stats ? (
+          <div className="space-y-3">
+            <Skeleton className="h-5 w-40" />
+            <Skeleton className="h-5 w-28" />
+            <Skeleton className="h-2.5 w-full" />
+          </div>
+        ) : (
+          <>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              解答済:{" "}
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {stats.answeredQuestions}
+              </span>{" "}
+              / {stats.totalQuestions}問
+            </p>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              正答率:{" "}
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {formatRate(stats.correctRate)}
+              </span>
+              <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">
+                （総解答 {stats.totalAnswers}回）
+              </span>
+            </p>
+            <ProgressBar
+              className="mt-3"
+              value={stats.answeredQuestions}
+              total={stats.totalQuestions}
+            />
+          </>
+        )}
+      </section>
 
-      <button type="button" className="primary" onClick={() => navigate('/settings')}>
-        学習を始める
-      </button>
-      <button type="button" className="secondary" onClick={() => navigate('/mistakes')}>
-        間違えた問題
-      </button>
-      <button type="button" className="secondary" onClick={() => navigate('/stats')}>
-        学習履歴
-      </button>
-    </section>
-  )
+      <div className="space-y-3">
+        {stats?.hasIncompleteSession && stats.incompleteSessionId ? (
+          <MenuButton
+            icon="▶"
+            variant="primary"
+            label="続きから"
+            description={
+              stats.incompleteProgress
+                ? `${stats.incompleteProgress.currentIndex + 1} / ${stats.incompleteProgress.totalQuestions}問目`
+                : undefined
+            }
+            onClick={() => navigate(`/quiz/${stats.incompleteSessionId}`)}
+          />
+        ) : null}
+
+        <MenuButton
+          icon="📝"
+          label="学習を始める"
+          description="モード・年度・分野を選んで出題"
+          onClick={() => navigate("/settings")}
+        />
+        <MenuButton
+          icon="❌"
+          label="間違えた問題"
+          description="苦手問題を集中復習"
+          onClick={() => navigate("/mistakes")}
+        />
+        <MenuButton
+          icon="📊"
+          label="学習履歴"
+          description="学習量と分野別正答率"
+          onClick={() => navigate("/stats")}
+        />
+      </div>
+    </div>
+  );
 }
